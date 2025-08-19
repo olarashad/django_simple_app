@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Delete {{ product.name }} · Simple Shop{% endblock %}
+{% block header %}Delete Product{% endblock %}
+{% block subheader %}Are you sure you want to delete <strong>{{ product.name }}</strong>? This cannot be undone.{% endblock %}
+
+{% block content %}
+  <article class="contrast">
+    <form method="post">
+      {% csrf_token %}
+      <p>This will permanently remove <strong>{{ product.name }}</strong> ({{ product.code }}).</p>
+      <button type="submit">Yes, delete</button>
+      <a href="{% url 'product_detail' product.pk %}" class="secondary">No, go back</a>
+    </form>
+  </article>
+{% endblock %}

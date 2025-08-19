@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Simple Shop{% endblock %}</title>
+  <!-- Pico.css for pretty defaults -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    header { margin: 1rem 0 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .muted { opacity: .8; }
+    .grid-2 { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items:center; }
+    .code-badge { font-size: .85rem; background: var(--muted-border-color); padding: .15rem .5rem; border-radius: 999px; }
+    table td, table th { vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <nav class="container">
+    <ul>
+      <li><strong>Simple Shop</strong></li>
+    </ul>
+    <ul>
+      <li><a href="{% url 'product_list' %}">All Products</a></li>
+      <li><a href="{% url 'category_list' %}">Categories</a></li>
+      <li><a href="{% url 'product_create' %}" role="button">+ Add Product</a></li>
+      <li><a href="/admin/">Admin</a></li>
+    </ul>
+  </nav>
+  <header class="container">
+    <h1>{% block header %}Product Manager{% endblock %}</h1>
+  </header>
+  <main class="container">
+    {% if error %}
+      <article class="contrast">
+        <strong>Error:</strong> {{ error }}
+      </article>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+
+</body>
+</html>

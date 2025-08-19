@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ category.name }} · Simple Shop{% endblock %}
+{% block header %}{{ category.name }}{% endblock %}
+
+{% block content %}
+{% if category.image %}
+  <img src="{{ category.image.url }}" alt="{{ category.name }}" style="max-width:200px;">
+{% endif %}
+
+<p>{{ category.description|default:"No description" }}</p>
+
+<h3>Products in this category:</h3>
+<ul>
+  {% for product in category.products.all %}
+    <li><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></li>
+  {% empty %}
+    <li>No products in this category yet.</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'category_edit' category.pk %}">Edit</a> |
+<a href="{% url 'category_delete' category.pk %}">Delete</a> |
+<a href="{% url 'category_list' %}">Back to list</a>
+{% endblock %}

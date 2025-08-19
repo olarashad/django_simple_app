@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Products · Simple Shop{% endblock %}
+{% block header %}All Products{% endblock %}
+{% block subheader %}Browse, view, edit, or delete. {% endblock %}
+
+{% block content %}
+  <div class="grid-2">
+    <p class="muted">Found {{ products|length }} product{{ products|length|pluralize }}.</p>
+    <p><a href="{% url 'product_create' %}" role="button">+ Add Product</a></p>
+  </div>
+
+  {% if products %}
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Created</th>
+        <th style="width: 260px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in products %}
+      <tr>
+        <td><strong>{{ p.name }}</strong></td>
+        <td><span class="code-badge">{{ p.code }}</span></td>
+        <td>{{ p.price }}</td>
+        <td>{{ p.instock_items }}</td>
+        <td>{{ p.created_at|date:"Y-m-d H:i" }}</td>
+        <td>
+          <a href="{% url 'product_detail' p.pk %}">View</a>
+          <a href="{% url 'product_edit' p.pk %}">Edit</a>
+          <form action="{% url 'product_delete' p.pk %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="secondary">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <article>
+      <header>No products yet</header>
+      <p>Start by creating your first product.</p>
+      <footer><a href="{% url 'product_create' %}" role="button">Create Product</a></footer>
+    </article>
+  {% endif %}
+{% endblock %}

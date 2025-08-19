@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }} · Simple Shop{% endblock %}
+{% block header %}{{ product.name }}{% endblock %}
+{% block subheader %}<span class="code-badge">{{ product.code }}</span>{% endblock %}
+
+{% block content %}
+{% if product.image %}
+  <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width:200px; margin-bottom: 1rem;">
+{% else %}
+  <p>No image uploaded</p>
+{% endif %}
+
+<article>
+  <header>
+    <h3>Overview</h3>
+  </header>
+  <p>{{ product.description|default:"No description provided." }}</p>
+  <ul>
+    <li><strong>Price:</strong> {{ product.price }}</li>
+    <li><strong>In Stock:</strong> {{ product.instock_items }}</li>
+    <li><strong>Created:</strong> {{ product.created_at|date:"Y-m-d H:i" }}</li>
+    <li><strong>Updated:</strong> {{ product.updated_at|date:"Y-m-d H:i" }}</li>
+  </ul>
+  <footer>
+    <a href="{% url 'product_edit' product.pk %}" role="button">Edit</a>
+    <a href="{% url 'product_list' %}" class="secondary">Back</a>
+  </footer>
+</article>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{% if category.pk %}Edit{% else %}Create{% endif %} Category · Simple Shop{% endblock %}
+{% block header %}{% if category.pk %}Edit{% else %}Create{% endif %} Category{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <label>
+    Name
+    <input type="text" name="name" value="{{ form.name.value|default_if_none:'' }}" required>
+  </label>
+
+  <label>
+    Description
+    <textarea name="description" rows="4">{{ form.description.value|default_if_none:'' }}</textarea>
+  </label>
+
+  <label>
+    Image
+    <input type="file" name="image">
+    {% if category.image %}
+      <p>Current image: <img src="{{ category.image.url }}" style="max-width:100px;"></p>
+    {% endif %}
+  </label>
+
+  <h3>Assign Products:</h3>
+  {{ form.products }}
+
+  <button type="submit">{% if category.pk %}Save Changes{% else %}Create{% endif %}</button>
+  <a href="{% url 'category_list' %}" class="secondary">Cancel</a>
+</form>
+{% endblock %}

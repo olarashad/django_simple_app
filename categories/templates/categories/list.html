@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Categories · Simple Shop{% endblock %}
+{% block header %}Categories{% endblock %}
+
+{% block content %}
+<a href="{% url 'category_create' %}" class="button">Create New Category</a>
+<ul>
+  {% for category in categories %}
+    <li>
+      <a href="{% url 'category_detail' category.pk %}">{{ category.name }}</a>
+    </li>
+  {% empty %}
+    <li>No categories yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

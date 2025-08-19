@@ -83,21 +83,21 @@ python manage.py runserver
 
 ### Products
 
-| URL                    | Description          | Screenshot                                        |
-| ---------------------- | -------------------- | ------------------------------------------------- |
-| `/products/`           | List all products    | ![Product List](docs/images/products_list.png)    |
-| `/products/create/`    | Create a new product | ![Create Product](docs/images/product_create.png) |
-| `/products/<id>/`      | View product details | ![Product Detail](docs/images/product_detail.png) |
-| `/products/<id>/edit/` | Edit product         | ![Edit Product](docs/images/product_edit.png)     |
+| URL                    | Description          | 
+| ---------------------- | -------------------- | 
+| `/products/`           | List all products    |
+| `/products/create/`    | Create a new product | 
+| `/products/<id>/`      | View product details |
+| `/products/<id>/edit/` | Edit product         | 
 
 ### Categories
 
-| URL                      | Description                           | Screenshot                                          |
-| ------------------------ | ------------------------------------- | --------------------------------------------------- |
-| `/categories/`           | List all categories                   | ![Category List](docs/images/categories_list.png)   |
-| `/categories/create/`    | Create a new category                 | ![Create Category](docs/images/category_create.png) |
-| `/categories/<id>/`      | View category details                 | ![Category Detail](docs/images/category_detail.png) |
-| `/categories/<id>/edit/` | Edit category, assign/remove products | ![Edit Category](docs/images/category_edit.png)     |
+| URL                      | Description                           | 
+| ------------------------ | ------------------------------------- | 
+| `/categories/`           | List all categories                   | 
+| `/categories/create/`    | Create a new category                 | 
+| `/categories/<id>/`      | View category details                 | 
+| `/categories/<id>/edit/` | Edit category, assign/remove products | 
 
 ---
 
@@ -123,7 +123,6 @@ simple_shop_project/
 ---
 ## ScreenShots
 
-![1](docs/images/1.png)
 ![2](docs/images/2.png)
 ![3](docs/images/3.png)
 ![4](docs/images/4.png)
@@ -131,6 +130,8 @@ simple_shop_project/
 ![6](docs/images/6.png)
 ![7](docs/images/7.png)
 ![8](docs/images/8.png)
+![1](docs/images/1.png)
+
 
 ---
 
